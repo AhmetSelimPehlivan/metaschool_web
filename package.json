@@ -2,7 +2,9 @@
     "name": "metaschool",
     "version": "1.0.0",
     "description": "metaschool web app",
-    
+    "scripts": {
+      "start": "node index.js"
+   },
     "dependencies": {
       "express": "^4.17.1",
       "react": "^17.0.2"
