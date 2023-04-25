@@ -10,7 +10,7 @@ const server = http.createServer(app);
 require('dotenv/config');
 
 app.set('trust proxy', 1) // trust first proxy
-app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
+app.use(cors({credentials: true, origin: ["https://metaschool.herokuapp.com/", process.env.BACKEND_PORT]}));
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.json());
