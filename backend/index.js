@@ -19,4 +19,4 @@ app.use(bodyParser.json());
 app.use(authRoute);
 app.use(taskRoute);
   
-server.listen(process.env.PORT)
+server.listen(process.env.PORT || 8080)
