@@ -4,7 +4,7 @@
     "description": "metaschool web app",
     "scripts": {
       "start": "npm run build && node server.js",
-      "build": "cd frontend && npm start && cd ../backend && npm start",
+      "build": "cd backend && npm start",
       "heroku-postbuild": "cd frontend && npm install && npm run build"
     },
     "dependencies": {
