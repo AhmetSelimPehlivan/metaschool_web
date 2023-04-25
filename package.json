@@ -1,18 +1,36 @@
 {
-  "name": "metaschool",
+  "name": "metaschool_web",
   "version": "1.0.0",
-  "description": "metaschool web app",
+  "description": "Metaschool Web",
+  "main": "backend/server.js",
+  "type": "module",
+  "engines": {
+    "node": "16.17.0"
+  },
   "scripts": {
-    "start": "npm run build && node index.js",
-    "server": "nodemon backend/index.js",
-    "client": "npm start --prefix frontend"
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "data:import": "node backend/seeder",
+    "data:destroy": "node backend/seeder -d",
+    "redis": "redis-server",
+    "heroku-postbuild": "npm install --prefix frontend && npm run build --prefix frontend"
   },
-
-  "dependencies": {
-    "express": "^4.17.1",
-    "react": "^17.0.2"
-  },
-  "main": "index.js",
+  "keywords": [],
   "author": "ASP",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "firebase": "^8.6.8",
+    "http": "^0.0.1-security",
+    "jsonwebtoken": "^9.0.0",
+    "mongodb": "^5.2.0",
+    "mongoose": "^7.0.3"
+  }
 }
