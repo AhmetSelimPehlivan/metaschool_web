@@ -3,7 +3,11 @@
     "version": "1.0.0",
     "description": "metaschool web app",
     "scripts": {
-      "start": "node index.js"
+      "start": "node backend/index.js",
+      "server": "nodemon backend/index.js",
+      "client": "npm start --prefix frontend",
+      "dev": "concurrently \"npm run index\" \"npm run client\"",
+      "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
    },
     "dependencies": {
       "express": "^4.17.1",
