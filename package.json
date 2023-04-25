@@ -4,8 +4,8 @@
     "description": "metaschool web app",
     "scripts": {
       "start": "cd backend && npm start",
-      "build": "cd frontend && npm run build && cd ../backend && npm start",
-      "heroku-postbuild": "cd frontend && npm install && npm run build && cd ../backend && npm install && npm start"
+      "build": "cd frontend && npm run build",
+      "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
     },
     "dependencies": {
       "express": "^4.17.1",
