@@ -7,9 +7,9 @@
     "server": "nodemon backend/index.js",
     "client": "npm start --prefix frontend",
     "dev": "concurrently \"npm run index\" \"npm run client\"",
-    "build": "cd frontend && npm install && npm run build && cd ../backend && npm install",
     "heroku-postbuild": "npm run build"
   },
+
   "dependencies": {
     "express": "^4.17.1",
     "react": "^17.0.2"
