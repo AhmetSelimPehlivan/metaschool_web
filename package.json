@@ -15,7 +15,7 @@
     "data:import": "node backend/seeder",
     "data:destroy": "node backend/seeder -d",
     "redis": "redis-server",
-    "heroku-postbuild": "npm install --prefix frontend && npm run build --prefix frontend"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
   "keywords": [],
   "author": "ASP",
