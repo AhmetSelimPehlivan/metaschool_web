@@ -10,23 +10,21 @@ function generateRefreshToken (user) {
     return jwt.sign(user, process.env.JWTPRIVATEKEY, { expiresIn: '15d' });
 };
 
-const authenticateToken = (req, res, next) => {
+module.exports.authenticateToken = (req, res) => {
     const authHeader = req.headers.authorization;
-
     if (authHeader) {
         const token = authHeader.split(" ")[1];
         jwt.verify(token, process.env.JWTPRIVATEKEY, (err, user) => {
         if (err)
-            return res.status(403).json("Token is not valid!");
-        else{
-            req.user = user;
-            next();
-        }
+            res.status(403).json("Token is not valid!");
+        else
+            res.status(200).json({user: user, message: "authenticated!"});
         });
     } else {
-        res.status(401).json("You are not authenticated!");
+        res.status(401).json({status: 401, message: "You are not authenticated!"});
     }
 };
+
 module.exports.gettoken_get= async (req, res) =>{
     const refreshToken = req.body.token
     if (refreshToken == null || !refreshTokens.includes(refreshToken)) return res.status(403).json("Session is not found");
@@ -42,7 +40,7 @@ module.exports.signup_post = async (req, res) => {
         const usersRef = firebase.database().ref('/Users');
         usersRef.once('value', (snapshot) => {
             const user = Object.values(snapshot.val()).find((userData) => userData.user_name === req.body.user_name);
-            console.log(user)
+
             if (user!==undefined)
                 res.status(401).json({ message: "!This User Is Already Exist" });
             else
@@ -68,7 +66,7 @@ module.exports.signup_get = async(req, res) => {
 }
 
 module.exports.login_post = async (req, res) => {
-    try { console.log(req.body)
+    try {
         const userRef = firebase.database().ref('/Users');
         userRef.once('value', (snapshot) => {
             const user = Object.values(snapshot.val()).find((userData) => userData.user_name === req.body.user_name);
@@ -78,8 +76,7 @@ module.exports.login_post = async (req, res) => {
                 const accessToken = generateAccessToken(user);
                 const refreshToken = generateRefreshToken(user);
                 refreshTokens.push(refreshToken);
-                console.log("Ok")
-                res.status(200).json({ user_name: user.user_name, accessToken: accessToken, refreshToken: refreshToken, message: "logged in successfully" });
+                res.status(200).json({ user_name: user.user_name, accessToken: accessToken, message: "logged in successfully" });
             }
             else
                 res.status(401).json({ message: "!Invalid Email or Password" });
