@@ -2,16 +2,15 @@
   "name": "metaschool_web",
   "version": "1.0.0",
   "description": "Metaschool Web",
-  "main": "backend/server.js",
-  "type": "module",
+  "main": "index.js",
   "engines": {
     "node": "16.17.0"
   },
   "scripts": {
-    "start": "node backend/server.js",
-    "server": "nodemon backend/server.js",
+    "start": "node index.js",
+    "server": "nodemon index.js",
     "client": "npm start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run index\" \"npm run client\""
   },
   "keywords": [],
   "author": "ASP",
@@ -25,8 +24,6 @@
     "express": "^4.18.2",
     "firebase": "^8.6.8",
     "http": "^0.0.1-security",
-    "jsonwebtoken": "^9.0.0",
-    "mongodb": "^5.2.0",
-    "mongoose": "^7.0.3"
+    "jsonwebtoken": "^9.0.0"
   }
 }
