@@ -11,7 +11,7 @@ const server = http.createServer(app);
 require('dotenv/config');
 
 // --------------------------deployment------------------------------
-const parentDir = path.resolve(__dirname, '..');
+const parentDir = __dirname;
 app.use(express.static(path.join(parentDir, 'public')));
 
 app.get('*', (req, res) => {
