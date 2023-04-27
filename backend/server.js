@@ -10,7 +10,6 @@ const app = express();
 const server = http.createServer(app);
 require('dotenv/config');
 
-app.set('trust proxy', 1) // trust first proxy
 app.use(cors({credentials: true, origin: ["https://metaschool.herokuapp.com/", process.env.BACKEND_PORT]}));
 app.use(express.json());
 app.use(cookieParser());
@@ -21,9 +20,9 @@ app.use(authRoute);
 app.use(taskRoute);
 
 // --------------------------deployment------------------------------
-app.use(express.static(path.join('/frontend/build')));
+app.use(express.static(path.join(path.resolve(), '/frontend/build')));
 app.get('*',(req, res) => {
-  res.sendFile(path.join('frontend','build','index.html'))
+  res.sendFile(path.join(path.resolve(), 'frontend','build','index.html'))
 })
 // --------------------------deployment------------------------------
 server.listen(process.env.PORT || 8080)
