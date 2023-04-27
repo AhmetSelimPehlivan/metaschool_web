@@ -20,9 +20,9 @@ app.use(authRoute);
 app.use(taskRoute);
 
 // --------------------------deployment------------------------------
-app.use(express.static(path.join(path.resolve(), '/frontend/build')));
+app.use(express.static(path.join(path.resolve(), '/frontend/public')));
 app.get('*',(req, res) => {
-  res.sendFile(path.join(path.resolve(), 'frontend','build','index.html'))
+  res.sendFile(path.join(path.resolve(), 'frontend','public','index.html'))
 })
 // --------------------------deployment------------------------------
 server.listen(process.env.PORT || 8080)
