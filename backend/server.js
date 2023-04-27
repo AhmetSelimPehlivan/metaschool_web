@@ -13,7 +13,7 @@ require('dotenv/config');
 // --------------------------deployment------------------------------
 
 // Resolve the absolute path to the parent directory of the current directory
-const parentDir = path.resolve(__dirname, 'root/home');
+const parentDir = path.resolve(__dirname, '../');
 
 app.use(express.static(path.join(parentDir, 'frontend/public')));
 
