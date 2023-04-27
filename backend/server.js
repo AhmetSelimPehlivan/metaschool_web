@@ -11,17 +11,15 @@ const server = http.createServer(app);
 require('dotenv/config');
 
 // --------------------------deployment------------------------------
-
-// Resolve the absolute path to the parent directory of the current directory
 const parentDir = path.resolve(__dirname, '../');
-
-app.use(express.static(path.join(parentDir, 'frontend/public')));
+app.use(express.static(path.join(parentDir, '')));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(parentDir, 'frontend/public/index.html'));
+  res.sendFile(path.join(parentDir, '/index.html'));
 });
 // --------------------------deployment------------------------------
 app.use(cors({credentials: true, origin: ["https://metaschool.herokuapp.com/", process.env.BACKEND_PORT]}));
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.json());
