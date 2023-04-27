@@ -20,9 +20,16 @@ app.use(authRoute);
 app.use(taskRoute);
 
 // --------------------------deployment------------------------------
-app.use(express.static(path.join(path.resolve(), '/frontend/public')));
-app.get('*',(req, res) => {
-  res.sendFile(path.join(path.resolve(), 'frontend','public','index.html'))
-})
+
+// Resolve the absolute path to the parent directory of the current directory
+const parentDir = path.resolve(__dirname, '..');
+
+// Use the parent directory path to serve static files from the "frontend/public" directory
+app.use(express.static(path.join(parentDir, 'frontend/public')));
+
+// Use the parent directory path to serve the "index.html" file
+app.get('*', (req, res) => {
+  res.sendFile(path.join(parentDir, 'frontend/public/index.html'));
+});
 // --------------------------deployment------------------------------
 server.listen(process.env.PORT || 8080)
