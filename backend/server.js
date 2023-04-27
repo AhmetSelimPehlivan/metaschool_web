@@ -22,9 +22,9 @@ app.use(taskRoute);
 
 // --------------------------deployment------------------------------
 const dirname = path.resolve();
-app.use(express.static(path.join(dirname, '/frontend/build')));
+app.use(express.static(path.join(dirname, '/frontend/public')));
 app.get('*',(req, res) => {
-  res.sendFile(path.join(dirname, 'frontend','build','index.html'))
+  res.sendFile(path.join(dirname, 'frontend','public','index.html'))
 })
 // --------------------------deployment------------------------------
 server.listen(process.env.PORT || 8080)
