@@ -21,10 +21,10 @@ app.use(authRoute);
 app.use(taskRoute);
 
 // --------------------------deployment------------------------------
-const dirname = path.resolve();
-app.use(express.static(path.join(dirname, '/frontend/public')));
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, '/frontend/public')));
 app.get('*',(req, res) => {
-  res.sendFile(path.join(dirname, 'frontend','public','index.html'))
+  res.sendFile(path.join(__dirname, 'frontend','public','index.html'))
 })
 // --------------------------deployment------------------------------
 server.listen(process.env.PORT || 8080)
