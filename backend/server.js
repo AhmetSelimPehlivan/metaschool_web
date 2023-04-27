@@ -12,10 +12,10 @@ require('dotenv/config');
 
 // --------------------------deployment------------------------------
 const parentDir = path.resolve(__dirname, '..');
-app.use(express.static(path.join(parentDir, 'frontend/public')));
+app.use(express.static(path.join(parentDir, 'public')));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(parentDir, 'frontend/public/index.html'));
+  res.sendFile(path.join(parentDir, 'public/index.html'));
 });
 // --------------------------deployment------------------------------
 app.use(cors({credentials: true, origin: ["https://metaschool.herokuapp.com/", process.env.BACKEND_PORT]}));
