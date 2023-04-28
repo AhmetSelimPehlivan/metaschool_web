@@ -4,10 +4,10 @@ const firebase = require("../firebase_connection");
 const refreshTokens = [];
 
 function generateAccessToken(user) {
-    return jwt.sign(user, process.env.JWTPRIVATEKEY, { expiresIn: '1h' })
+    return jwt.sign(user, process.env.JWTPRIVATEKEY, { expiresIn: '1d' })
   }
 function generateRefreshToken (user) {
-    return jwt.sign(user, process.env.JWTPRIVATEKEY, { expiresIn: '15h' });
+    return jwt.sign(user, process.env.JWTPRIVATEKEY, { expiresIn: '15d' });
 };
 
 module.exports.authenticateToken = (req, res) => {
@@ -73,8 +73,8 @@ module.exports.login_post = async (req, res) => {
             const hashPass = crypto.createHash('sha256').update(req.body.password).digest('hex');
             
             if (user!=null && hashPass===user.password){
-                const accessToken = generateAccessToken(req.body.user_name);
-                const refreshToken = generateRefreshToken(req.body.user_name);
+                const accessToken = generateAccessToken(user);
+                const refreshToken = generateRefreshToken(user);
                 refreshTokens.push(refreshToken);
                 res.status(200).json({ user_name: user.user_name, accessToken: accessToken, message: "logged in successfully" });
             }

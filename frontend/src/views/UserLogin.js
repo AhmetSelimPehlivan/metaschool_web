@@ -58,7 +58,6 @@ const UserLogin = () => {
                     if(localStorage.getItem("token") === null || localStorage.getItem("token") === undefined)
                         localStorage.setItem("token", data.accessToken);
                     setIsAuthenticated(true)
-                    history.push("/admin/dashboard");
                 }
                 else
                     setsave_msg("!Invalid Email or Password"); 
