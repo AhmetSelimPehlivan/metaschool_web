@@ -1,0 +1,33 @@
+import React, { createContext, useContext, useState, useEffect } from "react";
+
+const AuthContext = createContext(null);
+const useAuth = () =>{
+  return useContext(AuthContext);
+}
+const AuthProvider = ({ children }) => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+
+  useEffect(() => {
+    const fetchVerify = async () => {
+      const response = await fetch("https://metaschool.herokuapp.com/verify", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }).then(data => {
+        if(data.status === 200) setIsAuthenticated(true)
+        else setIsAuthenticated(false)
+      });
+    }
+    fetchVerify();
+  }, []);
+
+  return (
+    <AuthContext.Provider
+      value={{ isAuthenticated, setIsAuthenticated }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
+};
+
+export { AuthProvider, AuthContext, useAuth };
