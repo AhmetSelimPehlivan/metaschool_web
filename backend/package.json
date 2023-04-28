@@ -2,7 +2,7 @@
   "name": "metaschool_web",
   "version": "1.0.0",
   "description": "Metaschool Web",
-  "main": "backend/server.js",
+  "main": "server.js",
   "engines": {
     "node": "16.17.0"
   },
