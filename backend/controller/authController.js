@@ -73,8 +73,8 @@ module.exports.login_post = async (req, res) => {
             const hashPass = crypto.createHash('sha256').update(req.body.password).digest('hex');
             
             if (user!=null && hashPass===user.password){
-                const accessToken = generateAccessToken(user.name);
-                const refreshToken = generateRefreshToken(user.name);
+                const accessToken = generateAccessToken(req.body.user_name);
+                const refreshToken = generateRefreshToken(req.body.user_name);
                 refreshTokens.push(refreshToken);
                 res.status(200).json({ user_name: user.user_name, accessToken: accessToken, message: "logged in successfully" });
             }
