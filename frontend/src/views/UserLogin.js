@@ -48,7 +48,7 @@ const UserLogin = () => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-            }, mode: 'no-cors',
+            },
             credentials: 'include',
             body: JSON.stringify({
                 user_name: username,
