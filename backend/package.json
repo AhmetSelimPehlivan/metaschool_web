@@ -13,6 +13,9 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "cd frontend && npm install && npm run build"
   },
+  "resolutions": {
+    "react-chartjs-2": "3.0.4"
+  },
   "author": "ASP",
   "license": "ISC",
   "dependencies": {
