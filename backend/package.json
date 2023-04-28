@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Metaschool Web",
   "main": "server.js",
+  "proxy": "https://metaschool-web.onrender.com",
   "engines": {
     "node": "16.17.0"
   },
@@ -21,6 +22,7 @@
     "firebase": "^8.6.8",
     "http": "^0.0.1-security",
     "jsonwebtoken": "^9.0.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "proxy": "^1.0.2"
   }
 }
