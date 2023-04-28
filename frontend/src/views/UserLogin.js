@@ -23,6 +23,7 @@ const UserLogin = () => {
                     headers: {
                       'Content-Type': 'application/json'
                     },
+                    credentials: 'include',
                     body: JSON.stringify({
                       user_name: username,
                       password: password
@@ -46,9 +47,9 @@ const UserLogin = () => {
         await fetch('https://metaschool-web.onrender.com/login', {
             method: 'POST',
             headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`,
-              },
-              mode: 'cors',
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',
             body: JSON.stringify({
                 user_name: username,
                 password: password

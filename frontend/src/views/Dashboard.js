@@ -16,7 +16,9 @@ const [taskCount,setTaskCount] = useState([])
 
 useEffect(() => {
   async function fetchData(){
-    fetch('https://metaschool-web.onrender.com/getTasks').then(response => response.json())
+    fetch('https://metaschool-web.onrender.com/getTasks', {
+    mode: 'cors',
+    credentials: 'include'}).then(response => response.json())
     .then(data => {
       
     const taskArray = []
