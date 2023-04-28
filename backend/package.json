@@ -1,22 +1,24 @@
 {
-  "name": "metaschool_web",
+  "name": "metaschool",
   "version": "1.0.0",
-  "description": "Metaschool Web",
-  "main": "server.js",
-  "engines": {
-    "node": "16.17.0"
-  },
-  "scripts": {
-    "start": "node server.js",
-    "server": "nodemon server.js",
-    "client": "cd frontend && npm start --prefix frontend",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "cd frontend && npm start"
-  },
-  "author": "ASP",
-  "license": "ISC",
+  "private": true,
+  "homepage": "/login",
   "dependencies": {
-    "bcrypt": "^5.1.0",
+    "@fortawesome/fontawesome-free": "6.1.1",
+    "bootstrap": "4.5.3",
+    "chart.js": "3.4.1",
+    "classnames": "2.3.1",
+    "perfect-scrollbar": "1.5.5",
+    "prop-types": "15.8.1",
+    "react": ">=16.8.0",
+    "react-chartjs-2": "3.0.4",
+    "react-dom": ">=16.8.0",
+    "react-facebook-login": "^4.1.1",
+    "react-notification-alert": "0.0.13",
+    "react-router-dom": "5.2.0",
+    "react-scripts": "5.0.1",
+    "reactstrap": "8.7.1",
+    "sass": "1.53.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
@@ -26,5 +28,39 @@
     "http": "^0.0.1-security",
     "jsonwebtoken": "^9.0.0",
     "path": "^0.12.7"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "build": "react-scripts build && gulp licenses",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
+    "compile-scss": "sass src/assets/scss/black-dashboard-react.scss src/assets/css/black-dashboard-react.css",
+    "minify-scss": "sass src/assets/scss/black-dashboard-react.scss src/assets/css/black-dashboard-react.min.css --style compressed"
+  },
+  "resolutions": {
+    "react-chartjs-2": "3.0.4"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "optionalDependencies": {
+    "eslint-plugin-flowtype": "8.0.3",
+    "jquery": "3.6.0",
+    "typescript": "4.7.4"
+  },
+  "devDependencies": {
+    "gulp": "4.0.2",
+    "gulp-append-prepend": "1.0.9"
   }
 }
