@@ -21,11 +21,10 @@ app.use(bodyParser.json());
 app.use(authRoute);
 app.use(taskRoute);
 // --------------------------deployment------------------------------
-const parentDir = path.resolve(__dirname, '..');
-app.use(express.static(path.join(parentDir, '/frontend/public')));
+app.use(express.static(path.join(__dirname, '/frontend/public')));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(parentDir, '/frontend/public/index.html'));
+  res.sendFile(path.join(__dirname, '/frontend/public/index.html'));
 });
 // --------------------------deployment------------------------------
 server.listen(process.env.PORT || 8080)
