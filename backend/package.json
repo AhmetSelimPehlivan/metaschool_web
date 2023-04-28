@@ -11,7 +11,7 @@
     "server": "nodemon server.js",
     "client": "cd frontend && npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "cd frontend && npm run"
+    "heroku-postbuild": "cd frontend && npm start"
   },
   "author": "ASP",
   "license": "ISC",
