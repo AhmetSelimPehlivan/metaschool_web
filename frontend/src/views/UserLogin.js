@@ -6,8 +6,8 @@ import Footer from "../components/Footer/Footer.js";
 import { useAuth } from "contexts/AuthContext";
 
 const UserLogin = () => {
-    const [username, setUsername] = useState();
-    const [password, setPassword] = useState();
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
     const [save_msg, setsave_msg] = useState("");
     const history = useHistory();
     const {setIsAuthenticated, isAuthenticated} = useAuth();
@@ -23,10 +23,9 @@ const UserLogin = () => {
                     headers: {
                       'Content-Type': 'application/json'
                     },
-                    credentials: 'include',
                     body: JSON.stringify({
-                      user_name: username,
-                      password: password
+                      user_name: username.toString(),
+                      password: password.toString()
                     })
                   }).then(response => response.json())
                 .then(data => {
@@ -49,10 +48,9 @@ const UserLogin = () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            credentials: 'include',
             body: JSON.stringify({
-                user_name: username,
-                password: password
+                user_name: username.toString(),
+                password: password.toString()
             })
             }).then((response) => {
                 response.status === 200 ? setIsAuthenticated(true): setsave_msg("!Invalid Email or Password"); 
