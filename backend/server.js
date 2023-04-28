@@ -10,8 +10,7 @@ const app = express();
 const server = http.createServer(app);
 require('dotenv/config');
 
-app.use(cors());
-app.options('*', cors());
+app.use(cors({credentials: true, origin: 'https://metaschool-web.onrender.com'}));
 
 app.use(express.json());
 app.use(cookieParser());
