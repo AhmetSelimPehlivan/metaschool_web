@@ -52,11 +52,13 @@ const UserLogin = () => {
                 user_name: username.toString(),
                 password: password.toString()
             })
-            }).then((response) => {
-                if(response.status === 200){
+            }).then(response => response.json())
+            .then(data => {
+                if(data.accessToken !== undefined){
                     if(localStorage.getItem("token") === null || localStorage.getItem("token") === undefined)
                         localStorage.setItem("token", data.accessToken);
                     setIsAuthenticated(true)
+                    history.push("/admin/dashboard");
                 }
                 else
                     setsave_msg("!Invalid Email or Password"); 

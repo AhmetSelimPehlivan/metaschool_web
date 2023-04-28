@@ -49,7 +49,7 @@ module.exports.signup_post = async (req, res) => {
                     "password": crypto.createHash('sha256').update(req.body.password).digest('hex'),
                     "role": "User"
                 })
-                .then(() => res.status(201).json({accessToken: generateAccessToken(user), message: "User created successfully" }));
+                .then(() => res.status(201).json({accessToken: generateAccessToken(req.body.user_name), message: "User created successfully" }));
         });
     } catch (error) {
         res.status(500).json({ message: "!Internal Server Error\n",error });
@@ -73,8 +73,8 @@ module.exports.login_post = async (req, res) => {
             const hashPass = crypto.createHash('sha256').update(req.body.password).digest('hex');
             
             if (user!=null && hashPass===user.password){
-                const accessToken = generateAccessToken(user);
-                const refreshToken = generateRefreshToken(user);
+                const accessToken = generateAccessToken(user.name);
+                const refreshToken = generateRefreshToken(user.name);
                 refreshTokens.push(refreshToken);
                 res.status(200).json({ user_name: user.user_name, accessToken: accessToken, message: "logged in successfully" });
             }
