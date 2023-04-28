@@ -12,8 +12,7 @@ const AuthProvider = ({ children }) => {
       const response = await fetch("https://metaschool-web.onrender.com/verify", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-        credentials: 'include', mode: 'no-cors',
+        }
       }).then(data => {
         if(data.status === 200) setIsAuthenticated(true)
         else setIsAuthenticated(false)

@@ -53,7 +53,13 @@ const UserLogin = () => {
                 password: password.toString()
             })
             }).then((response) => {
-                response.status === 200 ? setIsAuthenticated(true): setsave_msg("!Invalid Email or Password"); 
+                if(response.status === 200){
+                    if(localStorage.getItem("token") === null || localStorage.getItem("token") === undefined)
+                        localStorage.setItem("token", data.accessToken);
+                    setIsAuthenticated(true)
+                }
+                else
+                    setsave_msg("!Invalid Email or Password"); 
             })
         .catch(error => {
             setsave_msg(error.response.data.message);
