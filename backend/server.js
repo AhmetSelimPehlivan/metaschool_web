@@ -11,15 +11,9 @@ const server = http.createServer(app);
 require('dotenv/config');
 
 app.use(cors({
-  origin: 'https://644b42706b8a1547b4746f7c--roaring-puppy-20a36e.netlify.app/',
-  credentials: true
+  credentials: true,
+  origin: true,
 }));
-
-app.use(function(req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', 'https://644b42706b8a1547b4746f7c--roaring-puppy-20a36e.netlify.app/');
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  next();
-});
 
 app.use(express.json());
 app.use(cookieParser());
