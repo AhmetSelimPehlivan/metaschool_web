@@ -13,6 +13,7 @@ const AuthProvider = ({ children }) => {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
+        mode: 'cors'
       }).then(data => {
         if(data.status === 200) setIsAuthenticated(true)
         else setIsAuthenticated(false)

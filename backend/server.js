@@ -11,7 +11,7 @@ const server = http.createServer(app);
 require('dotenv/config');
 
 
-app.use(cors({credentials: true, origin: ["https://metaschool-web.onrender.com/", process.env.BACKEND_PORT]}));
+app.use(cors());
 
 app.use(express.json());
 app.use(cookieParser());
