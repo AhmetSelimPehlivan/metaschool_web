@@ -4,10 +4,10 @@ const firebase = require("../firebase_connection");
 const refreshTokens = [];
 
 function generateAccessToken(user) {
-    return jwt.sign(user, process.env.JWTPRIVATEKEY, { expiresIn: '1d' })
+    return jwt.sign(user, process.env.JWTPRIVATEKEY, { expiresIn: '1h' })
   }
 function generateRefreshToken (user) {
-    return jwt.sign(user, process.env.JWTPRIVATEKEY, { expiresIn: '15d' });
+    return jwt.sign(user, process.env.JWTPRIVATEKEY, { expiresIn: '15h' });
 };
 
 module.exports.authenticateToken = (req, res) => {
