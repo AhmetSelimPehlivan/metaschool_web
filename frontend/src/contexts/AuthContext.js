@@ -9,7 +9,7 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const fetchVerify = async () => {
-      const response = await fetch("https://metaschool.herokuapp.com/verify", {
+      const response = await fetch("https://metaschool-web.onrender.com/verify", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },

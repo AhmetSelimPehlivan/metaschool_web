@@ -18,7 +18,7 @@ const UserLogin = () => {
                 setsave_msg("Password must contain at least 8 characters, 1 number, 1 upper and 1 lowercase!")
             }
             else{
-                fetch('https://metaschool.herokuapp.com/signup', {
+                fetch('https://metaschool-web.onrender.com/signup', {
                     method: 'POST',
                     headers: {
                       'Content-Type': 'application/json'
@@ -43,7 +43,7 @@ const UserLogin = () => {
     }
 
     const authorization = async () => {
-        await fetch('https://metaschool.herokuapp.com/login', {
+        await fetch('https://metaschool-web.onrender.com/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
