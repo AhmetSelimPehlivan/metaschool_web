@@ -43,13 +43,15 @@ module.exports.signup_post = async (req, res) => {
 
             if (user!==undefined)
                 res.status(401).json({ message: "!This User Is Already Exist" });
-            else
-                usersRef.push({
+            else{
+                const user = {
                     "user_name": req.body.user_name,
                     "password": crypto.createHash('sha256').update(req.body.password).digest('hex'),
                     "role": "User"
-                })
-                .then(() => res.status(201).json({accessToken: generateAccessToken(req.body.user_name), message: "User created successfully" }));
+                }
+                usersRef.push(user)
+                .then(() => res.status(201).json({accessToken: generateAccessToken(user), message: "User created successfully" }));
+            }
         });
     } catch (error) {
         res.status(500).json({ message: "!Internal Server Error\n",error });
